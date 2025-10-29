@@ -90,7 +90,7 @@
 
 ---
 
-## 11 — Dados Desbalanceados e Métricas Avançadas
+## 11 — Dados Desbalanceados
 - Problemas e consequências do desbalanceamento
 - Técnicas: Oversampling, Undersampling, SMOTE, cost-sensitive learning
 - Métricas apropriadas: F1, ROC-AUC, PR-AUC, G-mean, matriz de confusão especial

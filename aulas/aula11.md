@@ -1,4 +1,4 @@
-## 11. Dados Desbalanceados e Métricas Avançadas
+## 11. Dados Desbalanceados
 
 ### 1. Problema do desbalanceamento 
 
@@ -65,15 +65,6 @@ print(df['classe'].value_counts(normalize=True))
 
 O desbalanceamento está intimamente ligado à ideia de **aprendizado sensível ao custo**, onde o erro em uma classe é penalizado mais fortemente. Em vez de corrigir os dados, ajusta-se a função de perda. Essa abordagem é eficaz em modelos como regressão logística, SVM e redes neurais, utilizando parâmetros como `class_weight='balanced'` no Scikit-learn ou ajustes de loss manual no TensorFlow e PyTorch.
 
-***
-
-Essa extensão aprofunda o tema conceitual da **Aula 11**, preparando o terreno para a aplicação das estratégias práticas (reamostragem, custo-sensível e geração sintética) tratadas nos tópicos seguintes.
-<span style="display:none">[^1]</span>
-
-<div align="center">⁂</div>
-
-[^1]: conteudo-machine-learning.md
-
 
 ### 2. Estratégias de balanceamento 
 
@@ -92,13 +83,7 @@ Técnicas:
 
 - **Random Oversampling:** duplica aleatoriamente exemplos minoritários até atingir o equilíbrio.
 - **SMOTE (Synthetic Minority Oversampling Technique):** gera exemplos sintéticos interpolando amostras reais e seus vizinhos próximos.
-Exemplo: Se $x_1$ e $x_2$ são amostras próximas, cria-se uma nova amostra
-
-$$
-x_{\text{new}} = x_1 + \lambda (x_2 - x_1)
-$$
-
-onde \$\lambda \in \$.[^1]
+Exemplo: Se $x_1$ e $x_2$ são amostras próximas, cria-se uma nova amostra $$ x_{\text{new}} = x_1 + \lambda (x_2 - x_1) $$ onde $\lambda \in $.
 - **ADASYN (Adaptive Synthetic Sampling):** dá mais peso a regiões difíceis, isto é, onde há poucos exemplos minoritários rodeados por instâncias da classe majoritária.
 
 **Vantagens:** preserva todos os exemplos existentes e melhora a diversidade na classe minoritária.
@@ -178,13 +163,7 @@ Essas abordagens são especialmente úteis em aplicações complexas, como image
 | GAN / VAE Synthetic | Dados | Geração sofisticada | Complexidade e custo de treino |
 
 
-***
 
-Essas estratégias constituem o núcleo da **Aula 11** e fornecem a base prática para lidar com situações reais de **classificação desbalanceada**, onde a modelagem robusta depende mais da engenharia de dados e da escolha correta das métricas do que do algoritmo em si.
-
-<div align="center">⁂</div>
-
-[^1]: conteudo-machine-learning.md
 
 
 ### 3. Métricas apropriadas 
@@ -195,18 +174,11 @@ Em **dados desbalanceados**, a escolha das métricas de avaliação é um dos fa
 
 #### 3.1. Acurácia e suas limitações
 
-A acurácia (\$ accuracy \$) mede a proporção de predições corretas:
-
-$$
-\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
-$$
-
-onde:
-
-- \$ TP \$: verdadeiros positivos,
-- \$ TN \$: verdadeiros negativos,
-- \$ FP \$: falsos positivos,
-- \$ FN \$: falsos negativos.
+A acurácia ($ accuracy $) mede a proporção de predições corretas: $$ \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN} $$ onde:
+- $ TP $: verdadeiros positivos,
+- $ TN $: verdadeiros negativos,
+- $ FP $: falsos positivos,
+- $ FN $: falsos negativos.
 
 Em datasets desbalanceados, essa métrica tende a refletir principalmente o desempenho na classe majoritária. Por exemplo, em um dataset com 95% de negativos, prever “negativo” para tudo dá 95% de acurácia, mas recall nulo para a classe positiva.
 
@@ -249,13 +221,8 @@ Mede a capacidade do modelo de distinguir entre as classes, mostrando a relaçã
 Um classificador aleatório produz AUC = 0,5; perfeito, AUC = 1.
 - **Precision-Recall AUC (PR-AUC):**
 É mais informativa que ROC-AUC em casos de alto desbalanceamento. Representa a área sob a curva que relaciona precisão e recall. Quando há poucos positivos, PR-AUC tende a oferecer uma leitura mais confiável da efetividade do modelo.
-- **G-mean (Geometric Mean):**
-
-$$
-G = \sqrt{\text{TPR} \times \text{TNR}}
-$$
-
-Onde TNR (True Negative Rate) = \$ \frac{TN}{TN + FP} \$.
+- **G-mean (Geometric Mean):** $$ G = \sqrt{\text{TPR} \times \text{TNR}} $$ 
+Onde TNR (True Negative Rate) = $ \frac{TN}{TN + FP} $.
 Essa métrica busca o equilíbrio entre sensibilidade e especificidade.
 
 ***
@@ -401,7 +368,7 @@ $$
 L = -w_1 y \log(p) - w_0 (1 - y) \log(1 - p)
 $$
 
-onde \$ w_1 \$ e \$ w_0 \$ são pesos inversamente proporcionais à frequência das classes.
+onde $ w_1 $ e $ w_0 $ são pesos inversamente proporcionais à frequência das classes.
 
 ***
 
@@ -574,14 +541,6 @@ Independentemente da aplicação, é crucial:
 - Escolher métricas que reflitam o contexto do problema.
 - Monitorar o modelo em produção, pois o desbalanceamento pode mudar no tempo (conceito de **data drift**).
 
-***
-
-A Aula 11, ao tratar desses estudos, consolida o aprendizado técnico dentro de uma **visão aplicada e ética**, crucial para a formação de pesquisadores e profissionais capazes de implantar sistemas de aprendizado de máquina realistas e responsáveis.
-<span style="display:none">[^1]</span>
-
-<div align="center">⁂</div>
-
-[^1]: conteudo-machine-learning.md
 
 
 ### 6. Leituras recomendadas 
