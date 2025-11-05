@@ -236,7 +236,7 @@ $$
 t = \frac{\bar{X}_1 - \bar{X}_2}{S_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}
 $$
 
-onde \$ S_p \$ é o desvio padrão combinado (pooled standard deviation), e \$ n_1, n_2 \$ são os tamanhos das amostras.
+onde $ S_p $ é o desvio padrão combinado (pooled standard deviation), e $ n_1, n_2 $ são os tamanhos das amostras.
 
 O resultado do teste inclui o valor-p e o intervalo de confiança da diferença de médias.
 
@@ -254,8 +254,8 @@ $$
 F = \frac{MS_{entre}}{MS_{dentro}}
 $$
 
-- \$ MS_{entre} \$: média dos quadrados entre grupos (diferenças entre médias dos grupos).
-- \$ MS_{dentro} \$: média dos quadrados dentro dos grupos (variação interna).
+- $ MS_{entre} $: média dos quadrados entre grupos (diferenças entre médias dos grupos).
+- $ MS_{dentro} $: média dos quadrados dentro dos grupos (variação interna).
 
 Se o valor de **F** for alto e o **p-value** < 0,05, há evidência de diferença significativa entre as médias.
 
@@ -517,7 +517,7 @@ $$
 d = \frac{\bar{X}_1 - \bar{X}_2}{s_p}
 $$
 
-onde \$ s_p \$ é o desvio padrão combinado.
+onde $ s_p $ é o desvio padrão combinado.
 Convenção de interpretação:
     - d ≈ 0,2 → pequeno efeito
     - d ≈ 0,5 → efeito médio
@@ -528,7 +528,7 @@ $$
 \eta^2 = \frac{SS_{entre}}{SS_{total}}
 $$
 
-onde \$ SS \$ representa a soma dos quadrados (sum of squares).
+onde $ SS $ representa a soma dos quadrados (sum of squares).
 
 O tamanho do efeito é especialmente útil para justificar relevância prática de diferenças estatísticas, principalmente em experimentos com grandes amostras.
 
