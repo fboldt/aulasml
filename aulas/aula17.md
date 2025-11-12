@@ -96,10 +96,11 @@ As anomalias podem ocorrer por diferentes motivos e de formas variadas. Para lid
 ***
 
 6. **Comparação entre tipos de anomalias:**
+
 | Tipo de Anomalia | Contexto Necessário | Exemplo Típico | Técnicas Comuns |
-| :-- | :-- | :-- | :-- |
+|:-----------------|:--------------------|:---------------|:----------------|
 | Pontual | Não | Transação isolada fora da média | LOF, Isolation Forest, Z-score |
-| Contextual | Sim | Temperatura “alta” no inverno | ARIMA, Prophet, Autoencoders condicionais |
+| Contextual | Sim | Temperatura "alta" no inverno | ARIMA, Prophet, Autoencoders condicionais |
 | Coletiva | Sequencial / temporal | Sequência anormal em logs de rede | HMM, LSTM, clustering de subsequências |
 | Relacional | Estrutura de grafo | Grupo de usuários suspeito em rede social | GNN, análise de grafos |
 
@@ -147,12 +148,12 @@ São úteis quando não há uma distribuição subjacente bem definida ou quando
 Baseiam-se na suposição de que os dados normais seguem uma determinada distribuição (ex.: Gaussiana).
 Um ponto é considerado anômalo se a probabilidade de sua ocorrência sob essa distribuição for muito baixa.
     - **Estimadores Paramétricos (ex.: Gaussian Distribution):**
-        - Pressupõem que os dados se distribuem conforme uma função densidade paramétrica \$ p(x;\theta) \$.
-        - O valor de \$ p(x) \$ serve como score de anomalia — quanto menor, mais suspeito o ponto.
+        - Pressupõem que os dados se distribuem conforme uma função densidade paramétrica $ p(x;\theta) $.
+        - O valor de $ p(x) $ serve como score de anomalia — quanto menor, mais suspeito o ponto.
         - Simples de entender e implementar, mas limitados a distribuições bem comportadas.
     - **Modelos de Mistura (Mixture Models, ex.: GMM):**
         - Modelam os dados como combinação ponderada de múltiplas distribuições (geralmente gaussianas).
-        - Estimam probabilidade \$ P(x) = \sum_i w_i \mathcal{N}(x|\mu_i, \Sigma_i) \$.
+        - Estimam probabilidade $ P(x) = \sum_i w_i \mathcal{N}(x|\mu_i, \Sigma_i) $.
         - Permitem capturar multimodalidade (vários “tipos” de normalidade).
         - A probabilidade total pode ser usada como score de normalidade — pontos com baixa densidade são outliers.
     - **Modelos Não Paramétricos:**
@@ -180,6 +181,7 @@ São especialmente úteis quando se dispõe de apenas exemplos de dados normais 
 ***
 
 5. **Comparação entre classes de métodos:**
+
 | Categoria | Princípio | Tipo de Dados Ideal | Vantagens | Limitações |
 | :-- | :-- | :-- | :-- | :-- |
 | Vizinhança (LOF, KNN) | Distância / Densidade Local | Baixa a média dimensionalidade | Intuitivos, interpretáveis | Caros em tempo e espaço |
@@ -223,11 +225,11 @@ s(x, n) = 2^{-\frac{E(h(x))}{c(n)}}
 $$
 
 Onde:
-    - \$ h(x) \$ = comprimento médio do caminho de \$ x \$ entre todas as árvores,
-    - \$ E(h(x)) \$ = valor esperado de \$ h(x) \$,
-    - \$ c(n) \$ = valor de normalização dependente do tamanho da amostra \$ n \$.
+    - $ h(x) $ = comprimento médio do caminho de $ x $ entre todas as árvores,
+    - $ E(h(x)) $ = valor esperado de $ h(x) $,
+    - $ c(n) $ = valor de normalização dependente do tamanho da amostra $ n $.
 
-Um score \$ s(x, n) \$ próximo de 1 indica alta probabilidade de ser anômalo, enquanto valores próximos de 0.5 ou menores indicam pontos normais.
+Um score $ s(x, n) $ próximo de 1 indica alta probabilidade de ser anômalo, enquanto valores próximos de 0.5 ou menores indicam pontos normais.
 
 ***
 
@@ -246,7 +248,7 @@ O ajuste adequado desses hiperparâmetros depende do equilíbrio entre precisão
 ***
 
 4. **Vantagens do Isolation Forest:**
-    - **Escalabilidade:** possui complexidade linear \$ O(t \cdot \psi \cdot \log \psi) \$, onde \$ t \$ é o número de árvores e \$ \psi \$ é o tamanho da amostra.
+    - **Escalabilidade:** possui complexidade linear $ O(t \cdot \psi \cdot \log \psi) $, onde $ t $ é o número de árvores e $ \psi $ é o tamanho da amostra.
     - **Eficiência em alta dimensionalidade:** menos afetado pela “maldição da dimensionalidade” do que métodos baseados em distância.
     - **Não requer normalização prévia rigorosa:** devido à natureza das partições aleatórias.
     - **Não supervisionado:** não requer rótulos nem conhecimento prévio sobre a distribuição dos dados.
@@ -271,6 +273,7 @@ O ajuste adequado desses hiperparâmetros depende do equilíbrio entre precisão
 ***
 
 7. **Comparação com outros métodos de detecção de anomalias:**
+
 | Método | Natureza | Ponto Forte | Limitação |
 | :-- | :-- | :-- | :-- |
 | LOF | Densidade local | Adapta-se a regiões de densidades variáveis | Não escala bem em alta dimensão |
@@ -346,7 +349,7 @@ X_t = T_t + S_t + R_t
 $$
 
 (tendência + sazonalidade + ruído).
-        - A detecção é feita analisando o componente residual \$ R_t \$.
+        - A detecção é feita analisando o componente residual $ R_t $.
         - Técnicas de decomposição incluem STL (Seasonal-Trend decomposition using Loess) e ETS (Error-Trend-Seasonal).
     - **Método de Holt-Winters:**
         - Extensão suavizada para capturar padrões sazonais periódicos.
@@ -388,12 +391,12 @@ Aprendizado profundo tem sido amplamente adotado pela capacidade de capturar pad
 
 6. **Pipeline típico para detecção de anomalias temporais:**
 
-7. **Pré-processamento:** tratamento de ruído, normalização, e correção de gaps.
-8. **Decomposição:** extração de tendência e sazonalidade.
-9. **Modelagem:** escolha entre modelos de forecasting, autoencoders ou híbridos supervisionados.
-10. **Cálculo do score de anomalia:** diferença entre valor real e previsão ou erro de reconstrução.
-11. **Threshold adaptativo:** detecção baseada em percentis, desvio padrão móvel ou quantil dinâmico.
-12. **Avaliação contínua:** atualização do modelo para lidar com evolução de padrões (drift).
+    - **Pré-processamento:** tratamento de ruído, normalização, e correção de gaps.
+    - **Decomposição:** extração de tendência e sazonalidade.
+    - **Modelagem:** escolha entre modelos de forecasting, autoencoders ou híbridos supervisionados.
+    - **Cálculo do score de anomalia:** diferença entre valor real e previsão ou erro de reconstrução.
+    - **Threshold adaptativo:** detecção baseada em percentis, desvio padrão móvel ou quantil dinâmico.
+    - **Avaliação contínua:** atualização do modelo para lidar com evolução de padrões (drift).
 
 ***
 
@@ -545,7 +548,7 @@ $$
 Custo = c_1 \cdot FP + c_2 \cdot FN
 $$
 
-onde \$ c_1, c_2 \$ representam o impacto monetário ou operacional dos erros.
+onde $ c_1, c_2 $ representam o impacto monetário ou operacional dos erros.
 Essa abordagem é comum em fraude bancária, manutenção de sistemas e diagnóstico médico.
 
 ***
