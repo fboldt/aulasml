@@ -213,8 +213,9 @@ Diferentemente de algoritmos densidade- ou distância-baseados, o IF não tenta 
     - O algoritmo constrói um conjunto de **árvores de isolamento** (chamadas *Isolation Trees* ou *iTrees*).
     - Cada árvore é criada de forma aleatória, particionando os dados recursivamente ao escolher:
 
-3. Um atributo aleatório (ou subconjunto de atributos);
-4. Um valor limite aleatório entre o mínimo e máximo desse atributo.
+        - Um atributo aleatório (ou subconjunto de atributos);
+        - Um valor limite aleatório entre o mínimo e máximo desse atributo.
+        
     - Essa aleatoriedade garante diversidade entre as árvores e cobertura ampla sobre o espaço de dados.
     - O **tamanho do caminho** (número de divisões até isolar o ponto) é a métrica central: quanto menor o caminho médio necessário para isolar um ponto, maior sua probabilidade de ser uma anomalia.
 
