@@ -1,2 +1,5 @@
 .venv
 .ipynb_checkpoints
+aclImdb_v1.tar.gz
+aclImdb/
+imdb*
